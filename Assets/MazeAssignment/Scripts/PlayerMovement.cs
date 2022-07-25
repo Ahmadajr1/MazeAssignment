@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 0.01f;
+    [SerializeField] float speed = 1.07f;
     Rigidbody playerRB;
 //hello
     // Start is called before the first frame update
@@ -22,9 +22,9 @@ public class PlayerMovement : MonoBehaviour
     // To take player's movement input 
     private void move()
     {
-        float horizontalMovement = Input.GetAxisRaw("Vertical") * speed;
-        float verticalMovement = Input.GetAxisRaw("Horizontal") * speed;
-        Vector3 movement = new Vector3(horizontalMovement, 0, -verticalMovement);
+        float horizontalMovement = Input.GetAxisRaw("Horizontal") * speed;
+        float verticalMovement = Input.GetAxisRaw("Vertical") * speed;
+        Vector3 movement = new Vector3(horizontalMovement, 0, verticalMovement);
         playerRB.AddForce(movement,ForceMode.Impulse);
     }
 }
