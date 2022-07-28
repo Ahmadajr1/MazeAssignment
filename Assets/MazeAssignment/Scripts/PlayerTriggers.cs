@@ -20,7 +20,8 @@ public class PlayerTriggers : MonoBehaviour
 
         if (other.CompareTag("RedKey") || other.CompareTag("YellowKey") || other.CompareTag("GreenKey"))
         {
-            OpenAllMatchingDoors(IdenfifyMatchingDoorTag(keyTag));
+            string matchingDoorTag = IdenfifyMatchingDoorTag(keyTag);
+            OpenAllMatchingDoors(matchingDoorTag);
             Destroy(other.gameObject);
         }
     }
@@ -52,7 +53,6 @@ public class PlayerTriggers : MonoBehaviour
         GameObject[] doors = GameObject.FindGameObjectsWithTag(doorTag);
         foreach (GameObject door in doors)
         {
-            Debug.Log(door.name);
             DoorScript doorScript = door.GetComponent<DoorScript>();
             doorScript.OpenDoor();
         }

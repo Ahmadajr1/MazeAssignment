@@ -15,7 +15,7 @@ public class DoorScript : MonoBehaviour
             transform.Translate(Vector3.down * speed * Time.deltaTime);
             if (transform.position.y < 0)
             {
-                keyTriggered = false;
+                keyTriggered = false; // To stop the door from moving down further
                 gameObject.GetComponent<BoxCollider>().isTrigger = true;
             }
         }
@@ -24,6 +24,5 @@ public class DoorScript : MonoBehaviour
     public void OpenDoor()
     {
         keyTriggered = true;
-        Debug.Log($"{gameObject.name} opened");
     }
 }

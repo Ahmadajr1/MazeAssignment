@@ -5,8 +5,7 @@ using UnityEngine;
 public class XRotation : MonoBehaviour
 {
 
-    [SerializeField]
-    float rotationSpeed = 100;
+    [SerializeField] float rotationSpeed = 100;
     [SerializeField] private bool inverted = false;
 
     private void Start()

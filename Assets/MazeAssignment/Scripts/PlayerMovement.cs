@@ -6,12 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController playerController;
 
-    [SerializeField] private float speed = 5;
-    [SerializeField] private float gravity = 4;
-
-    Vector3 horizontalMovement;
-    Vector3 verticalMovement;
-    Vector3 movement;
+    private float speed = 8;
+    private Vector3 horizontalMovement;
+    private Vector3 verticalMovement;
+    private Vector3 movement;
 
 
     // Start is called before the first frame update
@@ -23,16 +21,26 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move();
+        horizontalMovement = transform.right * Input.GetAxisRaw("Horizontal");
+        verticalMovement = transform.forward * Input.GetAxisRaw("Vertical");
+
+        //To disable player input when off ground
+        if (playerController.isGrounded)
+        {
+            movement = (horizontalMovement + verticalMovement) * speed;
+        }
+        else
+            movement = Vector3.zero;
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     // Handles player's movement 
-    private void move()
+    private void Move()
     {
-        horizontalMovement = transform.right * Input.GetAxisRaw("Horizontal");
-        verticalMovement = transform.forward * Input.GetAxisRaw("Vertical");
-        movement = (horizontalMovement + verticalMovement).normalized * speed;
-        movement.y -= gravity;
-        playerController.Move(movement * Time.deltaTime);
+            playerController.SimpleMove(movement);
     }
 }

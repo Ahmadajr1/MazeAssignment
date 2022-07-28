@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField]
+    bool isTopViewEnabled = true;
     GameObject player;
-    float cameraYPosition = 15;
+    private Vector3 topViewPosition;
+    private Vector3 thirdPersonViewPosition;
 
-    Vector3 offset;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        offset = new Vector3(0, cameraYPosition, 0);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        player = GameObject.FindGameObjectWithTag("Player");
         
     }
 
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            isTopViewEnabled = !isTopViewEnabled;
+        }
+        AdjustCameraPositionAndRotation();
+    }
+
+    private void AdjustCameraPositionAndRotation()
+    {
+        topViewPosition = player.transform.position + new Vector3(0, 15, 0);
+        thirdPersonViewPosition = player.transform.position + new Vector3(0, 3, -4);
+
+        if (isTopViewEnabled)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(75, 0, 0));
+            transform.position = topViewPosition;
+        }
+        else 
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(30, 0, 0));
+            transform.position = thirdPersonViewPosition;
+        }
     }
 }
