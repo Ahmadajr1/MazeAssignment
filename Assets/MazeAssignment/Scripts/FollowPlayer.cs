@@ -6,13 +6,14 @@ public class FollowPlayer : MonoBehaviour
 {
     [SerializeField]
     GameObject player;
-    float cameraHeight = 10;
+    float cameraYPosition = 15;
+
     Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        offset = new Vector3(0, cameraHeight, 0);
+        offset = new Vector3(0, cameraYPosition, 0);
     }
 
     // Update is called once per frame

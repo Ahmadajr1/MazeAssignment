@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2138597577914437936}
   m_Layer: 0
   m_Name: YellowKey
-  m_TagString: Untagged
+  m_TagString: YellowKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  inverted: 0
 --- !u!65 &2138597577914437936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,8 +63,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 11, y: 3, z: 3}
+  m_Center: {x: 0.6993103, y: 0, z: 0.025362968}
 --- !u!1 &2138597578063339381
 GameObject:
   m_ObjectHideFlags: 0

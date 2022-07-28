@@ -6,6 +6,10 @@ TagManager:
   tags:
   - RedKey
   - YellowKey
+  - GreenKey
+  - RedDoor
+  - YellowDoor
+  - GreenDoor
   layers:
   - Default
   - TransparentFX

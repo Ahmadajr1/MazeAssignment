@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 164853745340607699}
   m_Layer: 0
   m_Name: RedDoor
-  m_TagString: Untagged
+  m_TagString: RedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 164853745340607694}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.39583457, y: 2, z: 0.46250418}
-  m_LocalScale: {x: 0.05, y: 4, z: 0.008333332}
+  m_LocalScale: {x: 6, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

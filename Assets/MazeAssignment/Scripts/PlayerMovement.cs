@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 1.07f;
-    Rigidbody playerRB;
+    private CharacterController playerController;
+
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float gravity = 4;
+
+    Vector3 horizontalMovement;
+    Vector3 verticalMovement;
+    Vector3 movement;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = gameObject.GetComponent<Rigidbody>();
+        playerController = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -19,12 +26,13 @@ public class PlayerMovement : MonoBehaviour
         move();
     }
 
-    // To take player's movement input 
+    // Handles player's movement 
     private void move()
     {
-        float horizontalMovement = Input.GetAxisRaw("Horizontal") * speed;
-        float verticalMovement = Input.GetAxisRaw("Vertical") * speed;
-        Vector3 movement = new Vector3(horizontalMovement, 0, verticalMovement);
-        playerRB.AddForce(movement,ForceMode.Impulse);
+        horizontalMovement = transform.right * Input.GetAxisRaw("Horizontal");
+        verticalMovement = transform.forward * Input.GetAxisRaw("Vertical");
+        movement = (horizontalMovement + verticalMovement).normalized * speed;
+        movement.y -= gravity;
+        playerController.Move(movement * Time.deltaTime);
     }
 }

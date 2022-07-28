@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     bool keyTriggered = false;
-    float speed = 2;
+    float speed = 1;
 
     // Update is called once per frame
     void Update()
@@ -13,7 +13,7 @@ public class DoorScript : MonoBehaviour
         if (keyTriggered)
         {
             transform.Translate(Vector3.down * speed * Time.deltaTime);
-            if (transform.position.y < -1.2)
+            if (transform.position.y < 0)
             {
                 keyTriggered = false;
                 gameObject.GetComponent<BoxCollider>().isTrigger = true;
