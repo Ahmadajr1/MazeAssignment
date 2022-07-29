@@ -33,7 +33,7 @@ public class FollowPlayer : MonoBehaviour
     private void AdjustCameraPositionAndXRotation()
     {
         topViewPosition = cameraTarget.transform.position + new Vector3(0, 20, 0);
-        thirdPersonViewPosition = cameraTarget.transform.localPosition + new Vector3(0, 0, -10);
+        thirdPersonViewPosition = cameraTarget.transform.localPosition + new Vector3(0, -3, -6);
 
         if (isTopViewEnabled)
         {
@@ -50,7 +50,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void AdjustCameraYRotation()
     {
-        float sensitivity = 20;
+        float sensitivity = 10;
         float yRotation = 0;
 
         yRotation = cameraTarget.transform.eulerAngles.y + Input.GetAxisRaw("Mouse X") * sensitivity;
