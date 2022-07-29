@@ -18,7 +18,7 @@ public class PlayerTriggers : MonoBehaviour
     {
         string keyTag = other.tag;
 
-        if (other.CompareTag("RedKey") || other.CompareTag("YellowKey") || other.CompareTag("GreenKey"))
+        if (other.CompareTag("RedKey") || other.CompareTag("YellowKey") || other.CompareTag("GreenKey") || other.CompareTag("OrangeKey"))
         {
             string matchingDoorTag = IdenfifyMatchingDoorTag(keyTag);
             OpenAllMatchingDoors(matchingDoorTag);
@@ -40,6 +40,9 @@ public class PlayerTriggers : MonoBehaviour
                 break;
             case "GreenKey":
                 matchingDoorTag = "GreenDoor";
+                break;
+            case "OrangeKey":
+                matchingDoorTag = "OrangeDoor";
                 break;
             default:
                 matchingDoorTag = "Unknown";

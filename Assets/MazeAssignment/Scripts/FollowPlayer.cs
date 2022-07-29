@@ -5,39 +5,55 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     bool isTopViewEnabled = true;
-    GameObject player;
+    GameObject cameraTarget;
     private Vector3 topViewPosition;
     private Vector3 thirdPersonViewPosition;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        
+        cameraTarget = GameObject.FindGameObjectWithTag("Camera Target");
     }
 
-    void LateUpdate()
+    private void Update()
+    {
+    }
+
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             isTopViewEnabled = !isTopViewEnabled;
         }
-        AdjustCameraPositionAndRotation();
+        AdjustCameraPositionAndXRotation();
+
+        if(!isTopViewEnabled)
+            AdjustCameraYRotation();
     }
 
-    private void AdjustCameraPositionAndRotation()
+    private void AdjustCameraPositionAndXRotation()
     {
-        topViewPosition = player.transform.position + new Vector3(0, 15, 0);
-        thirdPersonViewPosition = player.transform.position + new Vector3(0, 3, -4);
+        topViewPosition = cameraTarget.transform.position + new Vector3(0, 20, 0);
+        thirdPersonViewPosition = cameraTarget.transform.localPosition + new Vector3(0, 0, -10);
 
         if (isTopViewEnabled)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(75, 0, 0));
+            transform.rotation = Quaternion.Euler(85, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             transform.position = topViewPosition;
+            cameraTarget.transform.rotation = Quaternion.Euler(Vector3.zero);
         }
-        else 
+        else
         {
-            transform.rotation = Quaternion.Euler(new Vector3(30, 0, 0));
-            transform.position = thirdPersonViewPosition;
+            transform.rotation = Quaternion.Euler(30, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.localPosition = thirdPersonViewPosition;
         }
+    }
+
+    private void AdjustCameraYRotation()
+    {
+        float sensitivity = 20;
+        float yRotation = 0;
+
+        yRotation = cameraTarget.transform.eulerAngles.y + Input.GetAxisRaw("Mouse X") * sensitivity;
+        cameraTarget.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

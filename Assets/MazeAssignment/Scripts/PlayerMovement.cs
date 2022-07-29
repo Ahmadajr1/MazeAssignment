@@ -5,24 +5,26 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController playerController;
+    GameObject cameraTarget;
 
-    private float speed = 8;
+    private float speed = 10;
     private Vector3 horizontalMovement;
     private Vector3 verticalMovement;
     private Vector3 movement;
 
-
+    private Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
         playerController = gameObject.GetComponent<CharacterController>();
+        cameraTarget = GameObject.FindGameObjectWithTag("Camera Target");
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalMovement = transform.right * Input.GetAxisRaw("Horizontal");
-        verticalMovement = transform.forward * Input.GetAxisRaw("Vertical");
+        horizontalMovement = cameraTarget.transform.right * Input.GetAxisRaw("Horizontal");
+        verticalMovement = cameraTarget.transform.forward * Input.GetAxisRaw("Vertical");
 
         //To disable player input when off ground
         if (playerController.isGrounded)

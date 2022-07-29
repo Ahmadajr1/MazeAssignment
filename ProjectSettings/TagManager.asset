@@ -10,6 +10,9 @@ TagManager:
   - RedDoor
   - YellowDoor
   - GreenDoor
+  - OrangeKey
+  - OrangeDoor
+  - Camera Target
   layers:
   - Default
   - TransparentFX
