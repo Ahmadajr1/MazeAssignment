@@ -33,7 +33,7 @@ public class FollowPlayer : MonoBehaviour
     private void AdjustCameraPositionAndXRotation()
     {
         topViewPosition = cameraTarget.transform.position + new Vector3(0, 20, 0);
-        thirdPersonViewPosition = cameraTarget.transform.localPosition + new Vector3(0, -3, -6);
+        thirdPersonViewPosition = cameraTarget.transform.localPosition + new Vector3(0, -4, -10);
 
         if (isTopViewEnabled)
         {
@@ -43,7 +43,7 @@ public class FollowPlayer : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Euler(30, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(10, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             transform.localPosition = thirdPersonViewPosition;
         }
     }
